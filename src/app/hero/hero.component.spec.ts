@@ -8,13 +8,19 @@ import { By } from "@angular/platform-browser";
 
 describe('Hero Component Testing',()=>{
     let fixuture:ComponentFixture<HeroComponent>;
+    let HEROES;
     beforeEach(()=>{
+      HEROES=[
+        {id:1,name:'Govind',strength:8},
+        {id:2,name:'Vartika',strength:9},
+        {id:3,name:'Siaa',strength:10}
+    ]
         TestBed.configureTestingModule(
         {declarations:[HeroComponent],
             schemas:[NO_ERRORS_SCHEMA]
-        }           
+        }
         );
-        fixuture=TestBed.createComponent(HeroComponent);  
+        fixuture=TestBed.createComponent(HeroComponent);
     })
 
     it('should have the correct hero',()=>{
@@ -25,8 +31,8 @@ describe('Hero Component Testing',()=>{
     it('should render hero name in anchor tag',()=>{
       fixuture.componentInstance.hero={id:1,name:'GT',strength:3}
       fixuture.detectChanges();
-      
-      expect(fixuture.nativeElement.querySelector('a').textContent).toContain('GT');  
+
+      expect(fixuture.nativeElement.querySelector('a').textContent).toContain('GT');
     })
 
     it('should render hero name in anchor tag with debug element',()=>{
@@ -36,5 +42,7 @@ describe('Hero Component Testing',()=>{
         // let de=fixuture.debugElement.query(By.css('a'));
         expect(de.nativeElement.textContent).toContain('GT');
     })
+
+
 
 })
